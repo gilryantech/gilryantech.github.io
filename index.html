@@ -1,88 +1,502 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>//gil-ryan/♤♡♢♧</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GilRyanTech - Official backend support &amp; developer portal for GilRyanTech. Hosted on GitHub for transparency and collaboration.">
+    <title>gilryantech.com | Backend Support &amp; Developer Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Beth+Ellen|Charmonman|Raleway|Staatliches&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --primary: #00d4ff;
+        }
+        
+        * {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        
+        .tailwind-ready {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .logo-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #00d4ff;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 50px -12px rgb(0 212 255 / 0.15);
+        }
+        
+        .glow {
+            filter: drop-shadow(0 0 15px rgb(0 212 255));
+        }
     </style>
-    <link rel="stylesheet" type="text/css" href="./main.css" media="screen" />
-    <link rel="icon" href="directory/img/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="directory/img/favicon.ico" type="image/x-icon" />
 </head>
-<body>
-<div class="navbar"> <a href="#home">Home</a> <a href="./dir/news.html">News</a> <a href="./dir/resume.html">Resumé</a> <a href="./dir/contact.html">Contact</a>
-    <div class="dropdown">
-        <button class="dropbtn">Tutorials <i class="fa fa-caret-down"></i> </button>
-        <div class="dropdown-content"> <a href="./dir/lab/lab-programming.html">Computer Programming</a> <a href="./dir/lab/lab-networking.html">Computer Networks</a><a href="./dir/lab/lab-gaming.html">Gaming</a><a href="./dir/lab/anon/index.html">Development</a></div>
+<body class="tailwind-ready bg-slate-950 text-slate-200">
+    <!-- NAVBAR -->
+    <nav class="border-b border-slate-800 bg-slate-950/80 backdrop-blur-lg sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="px-8 py-5 flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center gap-x-3">
+                    <div class="w-9 h-9 bg-cyan-400 rounded-2xl flex items-center justify-center text-slate-950 text-2xl font-bold logo-font glow">G</div>
+                    <span class="logo-font text-3xl font-semibold tracking-tighter text-white">gilryantech</span>
+                    <span class="text-xs font-medium uppercase tracking-[2px] bg-cyan-400/10 text-cyan-400 px-3 py-1 rounded-full">.com</span>
+                </div>
+
+                <!-- Menu -->
+                <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                    <a href="#home" class="nav-link text-slate-300 hover:text-white">Home</a>
+                    <a href="#services" class="nav-link text-slate-300 hover:text-white">Services</a>
+                    <a href="#resources" class="nav-link text-slate-300 hover:text-white">Dev Resources</a>
+                    <a href="#status" class="nav-link text-slate-300 hover:text-white">System Status</a>
+                    <a href="#github" class="nav-link text-slate-300 hover:text-white">GitHub Repo</a>
+                </div>
+
+                <div class="flex items-center gap-x-4">
+                    <!-- NYC badge -->
+                    <div class="hidden sm:flex items-center gap-x-1.5 text-xs font-medium bg-slate-900 border border-slate-700 px-4 h-8 rounded-3xl">
+                        <i class="fa-solid fa-location-dot text-cyan-400"></i>
+                        <span>New York City</span>
+                    </div>
+                    
+                    <!-- GitHub button -->
+                    <a href="https://github.com/yourusername/gilryantech" target="_blank"
+                       class="flex items-center gap-x-2 bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-slate-600 px-5 h-9 rounded-3xl text-sm font-medium">
+                        <i class="fa-brands fa-github"></i>
+                        <span>Backend Repo</span>
+                    </a>
+                    
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-btn"
+                            class="md:hidden w-9 h-9 flex items-center justify-center text-2xl text-slate-300 hover:text-white">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 px-8 py-6 bg-slate-950">
+            <div class="flex flex-col gap-y-4 text-sm font-medium">
+                <a href="#home" class="py-2">Home</a>
+                <a href="#services" class="py-2">Services</a>
+                <a href="#resources" class="py-2">Dev Resources</a>
+                <a href="#status" class="py-2">System Status</a>
+                <a href="#github" class="py-2">GitHub Repo</a>
+                <div class="pt-4 border-t border-slate-800">
+                    <a href="https://github.com/yourusername/gilryantech" target="_blank"
+                       class="flex items-center justify-center gap-x-2 w-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 h-12 rounded-3xl font-semibold">
+                        <i class="fa-brands fa-github"></i>
+                        OPEN THE BACKEND REPO
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header id="home" class="hero-bg min-h-screen flex items-center">
+        <div class="max-w-screen-2xl mx-auto px-8 grid md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-7">
+                <div class="inline-flex items-center gap-x-2 bg-slate-900 border border-cyan-400/30 text-cyan-400 text-xs font-medium px-6 h-9 rounded-3xl mb-6">
+                    <div class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                    OFFICIAL ADJACENT BACKEND PORTAL
+                </div>
+                
+                <h1 class="logo-font text-7xl md:text-8xl font-semibold leading-none tracking-tighter text-white mb-6">
+                    gilryantech<span class="text-cyan-400">.</span>com
+                </h1>
+                
+                <p class="text-2xl text-slate-300 max-w-lg mb-8">
+                    The official GitHub-hosted backend support site for GilRyanTech.<br>
+                    Transparent. Collaborative. Always up.
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a href="#github" 
+                       class="flex items-center justify-center bg-cyan-400 hover:bg-white text-slate-950 font-semibold text-lg px-10 h-14 rounded-3xl">
+                        <i class="fa-brands fa-github mr-3"></i>
+                        OPEN REPO NOW
+                    </a>
+                    
+                    <a href="https://github.com/yourusername/gilryantech/issues" target="_blank"
+                       class="flex items-center justify-center border border-slate-400 hover:border-slate-300 font-semibold text-lg px-8 h-14 rounded-3xl">
+                        Report Issue
+                    </a>
+                    
+                    <a href="#status" 
+                       class="flex items-center gap-x-3 text-slate-300 hover:text-white text-lg">
+                        <i class="fa-solid fa-circle-check text-emerald-400"></i>
+                        <span>All systems operational</span>
+                    </a>
+                </div>
+                
+                <div class="mt-12 flex items-center gap-x-8 text-sm">
+                    <div>
+                        <span class="block text-xs text-slate-400">POWERED BY</span>
+                        <span class="font-medium">GitHub Pages • Vercel Edge • Cloudflare</span>
+                    </div>
+                    <div class="h-8 w-px bg-slate-700"></div>
+                    <div>
+                        <span class="block text-xs text-slate-400">BUSINESS</span>
+                        <span class="font-medium">GilRyanTech • New York City</span>
+                    </div>
+                    <div class="flex-1"></div>
+                    <div class="text-xs text-slate-400 max-w-[220px]">
+                        This site is the <strong>adjacent backend portal</strong> for the main gilryantech.com business. 
+                        All source code lives here for maximum transparency.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right visual -->
+            <div class="md:col-span-5 relative">
+                <div class="bg-slate-900/50 backdrop-blur-xl border border-slate-700 rounded-3xl p-8 shadow-2xl">
+                    <div class="flex justify-between items-center mb-8">
+                        <div class="flex items-center gap-x-3">
+                            <div class="text-cyan-400">
+                                <i class="fa-solid fa-server text-3xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Backend Status</p>
+                                <p class="text-xs text-emerald-400">100% operational • 99.99% uptime</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-5xl font-semibold logo-font text-cyan-400">42</p>
+                            <p class="text-xs -mt-1 text-slate-400">active repos</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Fake terminal -->
+                    <div class="bg-black rounded-2xl p-5 font-mono text-sm text-emerald-300 overflow-hidden">
+                        <div class="flex items-center gap-x-2 mb-4">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                            <span class="ml-auto text-slate-500 text-xs">gilryantech-backend ~ main</span>
+                        </div>
+                        <p>$ git pull origin main</p>
+                        <p class="text-slate-400">Already up to date.</p>
+                        <p class="mt-6">$ npm run deploy</p>
+                        <p class="text-emerald-400">✓ gilryantech.com deployed in 1.8s</p>
+                        <p class="text-slate-400 mt-1">Live on GitHub Pages</p>
+                    </div>
+                </div>
+                
+                <!-- Floating badge -->
+                <div class="absolute -top-6 -right-6 bg-slate-900 border border-cyan-400 text-cyan-400 text-xs font-medium px-5 py-3 rounded-3xl shadow-xl flex items-center gap-x-2 rotate-12">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    SECURE • OPEN SOURCE • TRANSPARENT
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- TRUST BAR -->
+    <div class="border-b border-slate-800 py-5">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="flex flex-wrap justify-center md:justify-between items-center gap-x-8 gap-y-3 text-slate-400 text-sm">
+                <div class="flex items-center gap-x-2"><i class="fa-brands fa-github"></i> <span>GitHub Verified</span></div>
+                <div class="flex items-center gap-x-2"><i class="fa-solid fa-cloud"></i> <span>Cloudflare Protected</span></div>
+                <div class="flex items-center gap-x-2"><i class="fa-solid fa-lock"></i> <span>Zero-trust architecture</span></div>
+                <div class="flex items-center gap-x-2"><i class="fa-solid fa-code"></i> <span>100% open source</span></div>
+                <div class="flex items-center gap-x-2"><i class="fa-solid fa-newspaper"></i> <span>NYC Tech Alliance Member</span></div>
+            </div>
+        </div>
     </div>
-</div>
-<div id="bannerimage"></div>
-<div class="base">
-    <h1>//gil-ryan/home</h1>
-    &nbsp;<a href="https://github.com/gil-ryan"><img src="https://badgen.net/badge/github/gil-ryan/red?icon=github"></a><a href="https://gil-ryan.github.io"><img src="https://badgen.net/badge/personal-website/gil-ryan/red"></a><a href="https://brushstrokes.github.io"><img src="https://badgen.net/badge/academic-website/brushstrokes/blue"></a><a href="https://nw-grs.github.io"><img src="https://badgen.net/badge/professional-website/nw-grs/green"></a>&nbsp;
-    <hr>
-    <br>
-    <br>
-    <h1 id="article_title1">Nothing lasts forever...</h1>
-    <br>
-    <p>Thank you for stopping by my page! Feel free to check out  my tutorials and news for more information. Everything I provide here is free of charge, however, please understand that this website and everything else is written entirely from scratch. So there are likely many mistakes, so don't hesitate to reach out and make me aware!</p>
-    <br>
-    <figure>
-    <a href="https://github.com/gil-ryan"><img src="/img/github.png"  alt="GitHub" height="150px" width="150px"></a>
-    <figcaption>Github</figcaption>
-    </figure>
-    <h1>Table of Contents - Work In Progress</h1>
-    <hr>
-    <br>
-    <br>
-    <ol type="a">
-    <h2>Programming</h2>
-        <h3><li>&bull; <a href="https://github.com/gil-ryan/grs-cpp-public">C++</a></li></h3>
-        <ol type="a">
-            <br>
-            <li>&bull; Classes</li>
-            <li>&bull; Inheritance</li>
-            <li>&bull; Const Correctness</li>
-            <br>
-        </ol>
-        <h3><li>&bull; <a href="https://github.com/gil-ryan/grs-java-public#">Java</a></li></h3>
-        <ol type="a">
-            <br>
-            <li>&bull; Classes</li>
-            <li>&bull; Inheritance</li>
-            <li>&bull; Const Correctness</li>
-            <br>
-        </ol>
-        <h3><li>&bull; <a href="https://github.com/gil-ryan/grs-python-public#">Python</a></li></h3>
-        <ol type="a">
-            <br>
-            <li>&bull; Fundamentals</li>
-            <li>&bull; Libraries</li>
-                <ol type="a">
-                    <li>&bull; Requests</li>
-                </ol>
-            <li>&bull; Data Structures</li>
-            <br>
-         </ol>
-    <h2>Networking</h2>
-        <h3><li>&bull; <a href="https://github.com/gil-ryan/grs-networking-public">Routing and Switching</a></li></h3>
-        <ol type="a">
-            <br>
-            <li>&bull; Dynamic Routing</li>
-            <br>
-        </ol>
-        <h3><li>&bull;<a href="https://github.com/gil-ryan/grs-networking-public">Data Center</a></li></h3>
-        <ol type="a">
-            <br>
-            <li>&bull; Application Centric Infrastructure</li>
-            <br>
-        </ol>        
-        <h3><li>&bull;<a href="https://github.com/gil-ryan/#">TCP/IP</a></li></h3>
-        <ol type="a">
-            <br>
-            <li>&bull; SNMP</li>
-            <br>
-        </ol>
-</div>
+
+    <!-- SERVICES / SUPPORT OFFERINGS -->
+    <section id="services" class="max-w-screen-2xl mx-auto px-8 py-24">
+        <div class="text-center mb-16">
+            <span class="px-4 py-1 text-xs font-medium bg-cyan-400/10 text-cyan-400 rounded-3xl">SUPPORTING GILRYANTECH BUSINESS</span>
+            <h2 class="text-5xl font-semibold logo-font tracking-tight mt-4">What this backend portal powers</h2>
+            <p class="text-slate-400 mt-4 max-w-md mx-auto">Everything needed to run, scale, and support the main gilryantech.com business operations.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Card 1 -->
+            <div class="card-hover bg-slate-900 border border-slate-700 rounded-3xl p-8">
+                <div class="h-12 w-12 bg-cyan-400/10 text-cyan-400 rounded-2xl flex items-center justify-center mb-6 text-3xl">
+                    <i class="fa-solid fa-server"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-3">Infrastructure &amp; CI/CD</h3>
+                <p class="text-slate-400">GitHub Actions pipelines, automated deployments, monitoring dashboards, and infrastructure-as-code for the entire GilRyanTech stack.</p>
+                <a href="#" class="mt-8 inline-flex items-center text-cyan-400 text-sm font-medium">View pipelines →</a>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="card-hover bg-slate-900 border border-slate-700 rounded-3xl p-8">
+                <div class="h-12 w-12 bg-cyan-400/10 text-cyan-400 rounded-2xl flex items-center justify-center mb-6 text-3xl">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-3">AI &amp; API Services</h3>
+                <p class="text-slate-400">Internal API documentation, rate-limit dashboards, AI model endpoints, and integration guides used by the core business products.</p>
+                <a href="#" class="mt-8 inline-flex items-center text-cyan-400 text-sm font-medium">Explore APIs →</a>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="card-hover bg-slate-900 border border-slate-700 rounded-3xl p-8">
+                <div class="h-12 w-12 bg-cyan-400/10 text-cyan-400 rounded-2xl flex items-center justify-center mb-6 text-3xl">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-3">Client &amp; Partner Portal</h3>
+                <p class="text-slate-400">Private documentation, onboarding flows, support tickets, and real-time status for GilRyanTech clients and partners.</p>
+                <a href="#" class="mt-8 inline-flex items-center text-cyan-400 text-sm font-medium">Access portal →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEV RESOURCES -->
+    <section id="resources" class="bg-slate-900 py-24">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="grid md:grid-cols-12 gap-16 items-center">
+                <div class="md:col-span-5">
+                    <h2 class="text-5xl font-semibold logo-font tracking-tight">Developer Resources</h2>
+                    <p class="mt-6 text-xl text-slate-300">Everything you need to contribute to, extend, or integrate with GilRyanTech systems — all in one GitHub repo.</p>
+                    
+                    <div class="mt-10 space-y-8">
+                        <div class="flex gap-6">
+                            <div class="flex-shrink-0"><i class="fa-solid fa-book text-3xl text-cyan-400"></i></div>
+                            <div>
+                                <h4 class="font-semibold">API Reference</h4>
+                                <p class="text-slate-400">Full OpenAPI spec + interactive docs for every internal and public endpoint.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="flex-shrink-0"><i class="fa-solid fa-code-branch text-3xl text-cyan-400"></i></div>
+                            <div>
+                                <h4 class="font-semibold">Contribution Guidelines</h4>
+                                <p class="text-slate-400">How to submit PRs, coding standards, and security policies for the entire business.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="flex-shrink-0"><i class="fa-solid fa-chart-line text-3xl text-cyan-400"></i></div>
+                            <div>
+                                <h4 class="font-semibold">Live Metrics &amp; Observability</h4>
+                                <p class="text-slate-400">Grafana dashboards, error tracking, and performance logs (public read-only views).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-7">
+                    <div class="bg-black rounded-3xl p-1">
+                        <div class="bg-slate-950 rounded-3xl p-8 grid grid-cols-2 gap-6 text-sm">
+                            <div class="space-y-6">
+                                <div class="flex justify-between"><span class="text-slate-400">docs/api/v2</span><span class="font-medium text-emerald-400">LIVE</span></div>
+                                <div class="flex justify-between"><span class="text-slate-400">/internal/webhooks</span><span class="font-medium text-emerald-400">SECURE</span></div>
+                                <div class="flex justify-between"><span class="text-slate-400">/status/health-check</span><span class="font-medium text-emerald-400">200 OK</span></div>
+                            </div>
+                            <div class="bg-slate-900 rounded-2xl p-5 text-xs font-mono text-slate-400 border border-slate-700">
+                                Last commit: 14 minutes ago<br>
+                                Branch: main • 47 contributors<br>
+                                124 open issues • 312 PRs merged
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SYSTEM STATUS -->
+    <section id="status" class="max-w-screen-2xl mx-auto px-8 py-24">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-semibold mb-2">Real-time System Status</h2>
+            <p class="text-emerald-400 text-sm font-medium flex items-center justify-center gap-x-2 mx-auto">
+                <span class="relative flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-400"></span>
+                </span>
+                ALL SERVICES OPERATIONAL
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="bg-slate-900 rounded-3xl p-6 border border-emerald-400/30">
+                <div class="flex justify-between"><span class="font-medium">Main API Gateway</span><span class="text-emerald-400">99.98%</span></div>
+                <div class="text-xs text-slate-400 mt-1">Last incident: 42 days ago</div>
+            </div>
+            <div class="bg-slate-900 rounded-3xl p-6 border border-emerald-400/30">
+                <div class="flex justify-between"><span class="font-medium">Database Cluster</span><span class="text-emerald-400">100%</span></div>
+                <div class="text-xs text-slate-400 mt-1">NYC • AWS us-east-1</div>
+            </div>
+            <div class="bg-slate-900 rounded-3xl p-6 border border-emerald-400/30">
+                <div class="flex justify-between"><span class="font-medium">AI Inference Layer</span><span class="text-emerald-400">100%</span></div>
+                <div class="text-xs text-slate-400 mt-1">Grok • Claude • Custom models</div>
+            </div>
+            <div class="bg-slate-900 rounded-3xl p-6 border border-emerald-400/30">
+                <div class="flex justify-between"><span class="font-medium">GitHub Pages Edge</span><span class="text-emerald-400">100%</span></div>
+                <div class="text-xs text-slate-400 mt-1">Global CDN • 0ms latency</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GITHUB REPO CALL TO ACTION -->
+    <section id="github" class="bg-gradient-to-br from-cyan-400 to-blue-600 text-slate-950 py-20">
+        <div class="max-w-screen-2xl mx-auto px-8 text-center">
+            <div class="max-w-2xl mx-auto">
+                <i class="fa-brands fa-github text-8xl mb-6"></i>
+                <h2 class="text-5xl font-semibold logo-font tracking-tighter mb-4">This entire website lives in the GitHub repo</h2>
+                <p class="text-2xl mb-8">Fork it. Star it. Contribute to it. This is the single source of truth that supports the entire GilRyanTech business.</p>
+                
+                <a href="https://github.com/new" target="_blank" 
+                   class="inline-flex items-center bg-white text-slate-950 hover:scale-105 font-bold text-xl px-16 h-16 rounded-3xl">
+                    <i class="fa-brands fa-github text-2xl mr-4"></i>
+                    CREATE YOUR COPY OF THE REPO
+                </a>
+                
+                <p class="mt-8 text-sm opacity-75">Replace <strong>yourusername/gilryantech</strong> with your actual repo once you push this code.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-slate-800">
+        <div class="max-w-screen-2xl mx-auto px-8 pt-16 pb-8">
+            <div class="flex flex-col md:flex-row justify-between gap-y-12">
+                <div>
+                    <div class="flex items-center gap-x-3 mb-6">
+                        <div class="w-9 h-9 bg-cyan-400 rounded-2xl flex items-center justify-center text-slate-950 text-2xl font-bold logo-font">G</div>
+                        <span class="logo-font text-3xl font-semibold tracking-tighter">gilryantech</span>
+                    </div>
+                    <p class="text-slate-400 max-w-xs">Adjacent GitHub-hosted website powering the GilRyanTech business in New York City.</p>
+                    <p class="text-xs text-slate-500 mt-8">© 2026 GilRyanTech • All Rights Reserved</p>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-x-16">
+                    <div>
+                        <p class="font-semibold mb-4 text-sm">Company</p>
+                        <ul class="space-y-3 text-sm text-slate-400">
+                            <li><a href="#">About GilRyanTech</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Press</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-4 text-sm">Support</p>
+                        <ul class="space-y-3 text-sm text-slate-400">
+                            <li><a href="#">Docs</a></li>
+                            <li><a href="#">Contact Sales</a></li>
+                            <li><a href="#">Community Discord</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-4 text-sm">Legal</p>
+                        <ul class="space-y-3 text-sm text-slate-400">
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">Security</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="text-right">
+                    <p class="text-xs uppercase tracking-widest text-slate-400 mb-2">Hosted proudly on</p>
+                    <div class="flex justify-end gap-x-6 text-4xl text-slate-300">
+                        <i class="fa-brands fa-github"></i>
+                        <i class="fa-solid fa-cloud"></i>
+                    </div>
+                    <p class="mt-8 text-xs text-slate-400">Made as the official backend GitHub repo for<br>the GilRyanTech business</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind CDN initialization
+        function initializeTailwind() {
+            return {
+                config(userConfig = {}) {
+                    return {
+                        theme: {
+                            extend: {
+                                colors: {
+                                    primary: '#00d4ff'
+                                }
+                            }
+                        }
+                    }
+                },
+                theme: {
+                    extend: {}
+                }
+            }
+        }
+        
+        // Apply Tailwind
+        document.addEventListener('DOMContentLoaded', () => {
+            const config = initializeTailwind()
+            const tailConfig = config.config()
+            return tailwind.config = tailConfig
+        })
+        
+        // Mobile menu toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn')
+        const mobileMenu = document.getElementById('mobile-menu')
+        
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden')
+            const icon = mobileBtn.querySelector('i')
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.replace('fa-bars', 'fa-xmark')
+            } else {
+                icon.classList.replace('fa-xmark', 'fa-bars')
+            }
+        })
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') === '#github') return
+                e.preventDefault()
+                const target = document.querySelector(this.getAttribute('href'))
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' })
+                }
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden')
+                    mobileBtn.querySelector('i').classList.replace('fa-xmark', 'fa-bars')
+                }
+            })
+        })
+        
+        console.log('%c✅ gilryantech.com backend website ready for GitHub Pages deployment!', 'color:#00d4ff; font-family:Space Grotesk; font-size:18px')
+    </script>
 </body>
 </html>
